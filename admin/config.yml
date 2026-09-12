@@ -15,4 +15,5 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Category", name: "category", widget: "string" }
+      - { label: "Media File Attachment", name: "file_upload", widget: "file", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
