@@ -2,6 +2,8 @@ backend:
   name: github
   repo: chipetagift85-dotcom/Psalmist-Gift
   branch: main
+  base_url: https://decap-cms-oauth.netlify.app
+  auth_endpoint: auth
 
 collections:
   - name: "blog"
