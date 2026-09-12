@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psalmist Gift</title>
+  <title>Psalmist Gift | Sacred Resources & Ministry</title>
   <!-- Marked Library for Markdown rendering -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
@@ -11,124 +11,275 @@
       --primary: #1e3a8a;
       --primary-dark: #0f172a;
       --accent: #d97706;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #334155;
+      --accent-gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.25);
+      --bg: #0b1329;
+      --card-bg: #1e293b;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
     }
 
     body { 
       font-family: 'Georgia', 'Times New Roman', serif; 
-      max-width: 800px; 
+      max-width: 1050px; 
       margin: 0 auto; 
-      padding: 0 15px 40px; 
+      padding: 0 20px 60px; 
       color: var(--text); 
       background: var(--bg); 
       line-height: 1.7; 
     }
 
-    /* Navigation Menu */
+    /* Navigation Bar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px solid #e2e8f0;
-      margin-bottom: 25px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 35px;
       font-family: system-ui, -apple-system, sans-serif;
     }
 
     .nav-brand {
-      font-weight: bold;
-      color: var(--primary-dark);
+      font-weight: 800;
+      color: #fef08a;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--gold-glow);
     }
 
     .nav-links {
       display: flex;
-      gap: 15px;
+      gap: 22px;
       list-style: none;
       margin: 0;
       padding: 0;
+      align-items: center;
     }
 
     .nav-links a {
       color: var(--text);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--accent-gold); }
 
-    /* Header Profile Card */
+    /* Profile Header Section */
     header { 
       text-align: center; 
-      padding: 40px 20px; 
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); 
+      padding: 55px 25px; 
+      background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 100%); 
       color: #ffffff; 
-      border-radius: 16px; 
-      margin-bottom: 35px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+      border-radius: 20px; 
+      margin-bottom: 40px; 
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); 
     }
 
     .profile-img {
-      width: 130px;
-      height: 130px;
+      width: 145px;
+      height: 145px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--accent);
-      margin-bottom: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 4px solid var(--accent-gold);
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px var(--gold-glow);
       display: inline-block;
     }
 
-    h1 { margin: 0; font-size: 2.4rem; color: #fef08a; letter-spacing: 0.5px; }
-    p.tagline { color: #cbd5e1; margin-top: 6px; font-style: italic; font-size: 1.05rem; }
-    p.bio { color: #e2e8f0; margin-top: 15px; font-size: 0.95rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    h1 { 
+      margin: 0; 
+      font-size: 2.8rem; 
+      color: #fef08a; 
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
 
-    /* Blog Posts Feed */
+    p.tagline { 
+      color: #fbbf24; 
+      margin-top: 10px; 
+      font-style: italic; 
+      font-size: 1.15rem; 
+      letter-spacing: 0.3px;
+    }
+
+    p.bio { 
+      color: #cbd5e1; 
+      margin-top: 18px; 
+      font-size: 1.02rem; 
+      max-width: 650px; 
+      margin-left: auto; 
+      margin-right: auto; 
+      line-height: 1.6; 
+    }
+
+    /* Category Filter Navigation */
+    .filter-section {
+      margin-bottom: 35px;
+      text-align: center;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .filter-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .cat-btn {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      color: #cbd5e1;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .cat-btn:hover {
+      border-color: var(--accent-gold);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .cat-btn.active {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 15px var(--gold-glow);
+    }
+
+    /* Dynamic Category Intro Header */
+    .category-intro {
+      text-align: center;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 28px 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--accent-gold);
+      margin-bottom: 35px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .category-intro h2 {
+      margin: 0 0 8px 0;
+      color: #fef08a;
+      font-size: 1.7rem;
+      font-family: 'Georgia', serif;
+    }
+
+    .category-intro p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* Grid Layout for Rows & Columns */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 28px;
+    }
+
+    /* Content Cards */
     .post { 
       background: var(--card-bg); 
-      padding: 30px; 
-      border-radius: 12px; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-      margin-bottom: 35px; 
-      border-top: 4px solid var(--primary); 
+      padding: 28px; 
+      border-radius: 16px; 
+      border: 1px solid var(--border-color);
+      border-top: 4px solid var(--accent); 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
     }
 
-    .post h2 { margin-top: 0; color: var(--primary-dark); font-size: 1.7rem; }
-    .post-date { font-size: 0.85rem; color: #64748b; margin-bottom: 18px; text-transform: uppercase; font-family: system-ui, sans-serif; }
+    .post:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.4);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-family: system-ui, sans-serif;
+    }
+
+    .category-tag {
+      background: rgba(217, 119, 6, 0.15);
+      color: #fef08a;
+      border: 1px solid var(--accent);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .post-date { font-size: 0.82rem; color: var(--text-muted); }
+    .post h3 { margin: 0 0 14px; color: #ffffff; font-size: 1.45rem; line-height: 1.35; }
     
-    audio { width: 100%; margin: 20px 0; border-radius: 8px; }
+    audio, video { width: 100%; margin: 14px 0; border-radius: 8px; }
 
     .download-btn { 
-      display: inline-block; 
-      background: var(--primary); 
+      display: block; 
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%); 
       color: #ffffff; 
-      padding: 12px 22px; 
+      padding: 11px 18px; 
       text-decoration: none; 
-      border-radius: 8px; 
-      font-weight: bold; 
-      font-size: 0.95rem; 
+      border-radius: 10px; 
+      font-weight: 700; 
+      font-size: 0.9rem; 
       font-family: system-ui, sans-serif;
-      margin-top: 10px; 
-      transition: background 0.2s ease;
+      margin-top: 14px; 
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.2s ease;
     }
 
-    .download-btn:hover { background: var(--primary-dark); }
+    .download-btn:hover { 
+      background: linear-gradient(135deg, var(--accent) 0%, #b45309 100%); 
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+
+    .post-body { color: #cbd5e1; font-size: 0.98rem; }
 
     footer {
       text-align: center;
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e8f0;
-      font-size: 0.85rem;
-      color: #94a3b8;
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-muted);
       font-family: system-ui, sans-serif;
     }
 
-    footer a { color: var(--primary); text-decoration: none; }
+    footer a { color: var(--accent-gold); text-decoration: none; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -138,22 +289,42 @@
     <a href="/" class="nav-brand" id="nav-title">Psalmist Gift</a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <li><a href="#posts-container">Audio Messages</a></li>
+      <li><a href="#feed">Browse Categories</a></li>
       <li><a href="/admin/" target="_blank">Admin Login</a></li>
     </ul>
   </nav>
 
-  <!-- Profile Header Section -->
+  <!-- Profile Header -->
   <header>
-    <img id="profile-img" src="https://via.placeholder.com/130?text=Photo" alt="Profile Photo" class="profile-img">
+    <img id="profile-img" src="https://via.placeholder.com/145?text=Photo" alt="Profile Photo" class="profile-img">
     <h1 id="header-title">Psalmist Gift</h1>
-    <p class="tagline" id="header-tagline">Audio Messages, Sermons & Sacred Songs</p>
+    <p class="tagline" id="header-tagline">Sacred Songs, Sermons, Devotions & Scholar Works</p>
     <p class="bio" id="header-bio" style="display: none;"></p>
   </header>
 
-  <!-- Posts Feed -->
-  <main id="posts-container">
-    <p style="text-align: center; color: #666;">Loading site content...</p>
+  <!-- Category Selection Bar -->
+  <section class="filter-section" id="feed">
+    <div class="filter-title">Select Content Category</div>
+    <div class="category-buttons">
+      <button class="cat-btn active" onclick="filterPosts('all', event)">All Resources</button>
+      <button class="cat-btn" onclick="filterPosts('Sermons', event)">🎙️ Sermons</button>
+      <button class="cat-btn" onclick="filterPosts('Songs', event)">🎵 Songs</button>
+      <button class="cat-btn" onclick="filterPosts('Daily Devotion', event)">📖 Daily Devotion</button>
+      <button class="cat-btn" onclick="filterPosts('Videos', event)">🎬 Videos</button>
+      <button class="cat-btn" onclick="filterPosts('Photos', event)">🖼️ Photos</button>
+      <button class="cat-btn" onclick="filterPosts('Research Paper', event)">📄 Research Papers</button>
+    </div>
+  </section>
+
+  <!-- Dynamic Section Header -->
+  <div class="category-intro" id="category-intro">
+    <h2 id="cat-header-title">All Ministry Resources</h2>
+    <p id="cat-header-desc">Explore the complete collection of sermons, sacred music, daily devotions, visual media, and academic research papers.</p>
+  </div>
+
+  <!-- Main Grid Feed (Rows & Columns) -->
+  <main class="posts-grid" id="posts-container">
+    <p style="text-align: center; grid-column: 1/-1; color: var(--text-muted);">Loading ministry resources...</p>
   </main>
 
   <footer>
@@ -161,7 +332,39 @@
   </footer>
 
   <script>
-    // 1. Fetch Profile and Settings from CMS
+    let allPostsData = [];
+
+    const categoryDescriptions = {
+      'all': {
+        title: 'All Ministry Resources',
+        desc: 'Explore the complete collection of sermons, sacred music, daily devotions, visual media, and academic research papers.'
+      },
+      'Sermons': {
+        title: '🎙️ Audio & Video Sermons',
+        desc: 'Listen to and download spiritual messages, expositional teachings, and gospel sermons.'
+      },
+      'Songs': {
+        title: '🎵 Sacred Songs & Praise',
+        desc: 'Stream, listen to, and download worship songs, sacred hymns, and musical psalmistry.'
+      },
+      'Daily Devotion': {
+        title: '📖 Daily Spiritual Devotions',
+        desc: 'Short daily readings, scriptural reflections, and prayer guidance for personal spiritual growth.'
+      },
+      'Videos': {
+        title: '🎬 Video Library',
+        desc: 'Watch recorded live services, gospel presentations, and video messages.'
+      },
+      'Photos': {
+        title: '🖼️ Photo Gallery',
+        desc: 'Browse photos from ministry events, services, fellowship gatherings, and mission work.'
+      },
+      'Research Paper': {
+        title: '📄 Academic Research & Papers',
+        desc: 'Read scholarly papers, theological research, lesson guides, and academic essays.'
+      }
+    };
+
     async function fetchSettings() {
       try {
         const res = await fetch('/content/settings/profile.json');
@@ -179,12 +382,9 @@
             bioEl.style.display = 'block';
           }
         }
-      } catch (err) {
-        console.log("Using default site values.");
-      }
+      } catch (err) { console.log("Using standard values."); }
     }
 
-    // 2. Fetch Blog Posts / Songs from GitHub
     async function fetchPosts() {
       const container = document.getElementById('posts-container');
       try {
@@ -192,11 +392,11 @@
         const files = await response.json();
 
         if (!Array.isArray(files) || files.length === 0) {
-          container.innerHTML = '<p style="text-align: center;">No posts published yet.</p>';
+          container.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-muted);">No published content available yet.</p>';
           return;
         }
 
-        container.innerHTML = '';
+        allPostsData = [];
 
         for (const file of files.reverse()) {
           if (file.name.endsWith('.md')) {
@@ -209,43 +409,89 @@
 
             let title = file.name.replace('.md', '');
             let date = '';
-            let audioFile = '';
+            let category = 'General';
+            let mediaFile = '';
 
             headerLines.forEach(line => {
               if (line.startsWith('title:')) title = line.replace('title:', '').trim().replace(/^"(.*)"$/, '$1');
               if (line.startsWith('date:')) date = line.replace('date:', '').trim().substring(0, 10);
-              if (line.startsWith('audio:')) audioFile = line.replace('audio:', '').trim().replace(/^"(.*)"$/, '$1');
-              if (line.startsWith('file_upload:')) audioFile = line.replace('file_upload:', '').trim().replace(/^"(.*)"$/, '$1');
+              if (line.startsWith('category:')) category = line.replace('category:', '').trim().replace(/^"(.*)"$/, '$1');
+              if (line.startsWith('audio:')) mediaFile = line.replace('audio:', '').trim().replace(/^"(.*)"$/, '$1');
+              if (line.startsWith('file_upload:')) mediaFile = line.replace('file_upload:', '').trim().replace(/^"(.*)"$/, '$1');
             });
 
-            const postCard = document.createElement('article');
-            postCard.className = 'post';
-
-            let audioHTML = '';
-            if (audioFile) {
-              audioHTML = `
-                <audio controls preload="metadata">
-                  <source src="${audioFile}" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-                <a href="${audioFile}" download class="download-btn">🎧 Download Audio</a>
-              `;
-            }
-
-            postCard.innerHTML = `
-              <h2>${title}</h2>
-              ${date ? `<div class="post-date">Published on ${date}</div>` : ''}
-              ${audioHTML}
-              <div class="post-body" style="margin-top: 15px;">${marked.parse(body)}</div>
-            `;
-
-            container.appendChild(postCard);
+            allPostsData.push({ title, date, category, mediaFile, body });
           }
         }
+
+        renderPosts('all');
       } catch (err) {
         console.error(err);
-        container.innerHTML = '<p style="text-align: center; color: red;">Failed to load posts. Please try again later.</p>';
+        container.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ef4444;">Failed to load resources.</p>';
       }
+    }
+
+    function renderPosts(selectedCategory) {
+      const container = document.getElementById('posts-container');
+      container.innerHTML = '';
+
+      const intro = categoryDescriptions[selectedCategory] || {
+        title: selectedCategory,
+        desc: `Browsing items under ${selectedCategory}.`
+      };
+      document.getElementById('cat-header-title').innerText = intro.title;
+      document.getElementById('cat-header-desc').innerText = intro.desc;
+
+      const filtered = selectedCategory === 'all' 
+        ? allPostsData 
+        : allPostsData.filter(p => p.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim());
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<p style="text-align: center; grid-column: 1/-1; color: var(--text-muted); margin: 40px 0;">No items found under "${selectedCategory}" yet.</p>`;
+        return;
+      }
+
+      filtered.forEach(post => {
+        const postCard = document.createElement('article');
+        postCard.className = 'post';
+
+        let mediaHTML = '';
+        if (post.mediaFile) {
+          const isVideo = post.mediaFile.endsWith('.mp4') || post.mediaFile.endsWith('.mov');
+          const isPDF = post.mediaFile.endsWith('.pdf') || post.mediaFile.endsWith('.docx');
+
+          if (isVideo) {
+            mediaHTML = `<video controls><source src="${post.mediaFile}"></video>`;
+          } else if (isPDF) {
+            mediaHTML = `<a href="${post.mediaFile}" target="_blank" class="download-btn">📄 View / Download Document</a>`;
+          } else {
+            mediaHTML = `
+              <audio controls preload="metadata"><source src="${post.mediaFile}" type="audio/mpeg"></audio>
+              <a href="${post.mediaFile}" download class="download-btn">🎧 Download File</a>
+            `;
+          }
+        }
+
+        postCard.innerHTML = `
+          <div>
+            <div class="post-meta">
+              <span class="category-tag">${post.category}</span>
+              ${post.date ? `<span class="post-date">• ${post.date}</span>` : ''}
+            </div>
+            <h3>${post.title}</h3>
+            ${mediaHTML}
+            <div class="post-body" style="margin-top: 14px;">${marked.parse(post.body)}</div>
+          </div>
+        `;
+
+        container.appendChild(postCard);
+      });
+    }
+
+    function filterPosts(catName, evt) {
+      document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+      if (evt && evt.target) evt.target.classList.add('active');
+      renderPosts(catName);
     }
 
     fetchSettings();
