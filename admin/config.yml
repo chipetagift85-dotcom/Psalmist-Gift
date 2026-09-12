@@ -1,32 +1,32 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: chipetagift85-dotcom/Psalmist-Gift
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
-
 collections:
-  - name: "settings"
-    label: "Site Settings"
-    delete: false
-    files:
-      - name: "profile"
-        label: "Profile Info & Photo"
-        file: "content/settings/profile.json"
-        fields:
-          - { label: "Ministry / Artist Name", name: "site_title", widget: "string", default: "Psalmist Gift" }
-          - { label: "Tagline", name: "tagline", widget: "string", default: "Audio Messages, Sermons & Sacred Songs" }
-          - { label: "Profile Photo", name: "profile_image", widget: "image", required: false }
-          - { label: "Short Bio", name: "bio", widget: "text", required: false }
-
   - name: "blog"
-    label: "Blog Posts / Sermons"
+    label: "Resources"
     folder: "content/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Category", name: "category", widget: "string" }
-      - { label: "Media File Attachment", name: "file_upload", widget: "file", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "select", options: ["Sermons", "Articles", "Devotions", "Sacred Songs", "Academic Papers"]}
+      - {label: "Media / File Upload", name: "media_file", widget: "file", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "profile"
+        label: "Profile & Contact Info"
+        file: "content/settings/profile.json"
+        fields:
+          - {label: "Site Title", name: "site_title", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Profile Image", name: "profile_image", widget: "image"}
+          - {label: "Bio", name: "bio", widget: "text", required: false}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Phone", name: "phone", widget: "string"}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string"}
+          - {label: "Facebook Name", name: "facebook", widget: "string"}
