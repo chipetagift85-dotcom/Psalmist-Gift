@@ -6,8 +6,21 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    files:
+      - name: "profile"
+        label: "Profile Info & Photo"
+        file: "content/settings/profile.json"
+        fields:
+          - { label: "Ministry / Artist Name", name: "site_title", widget: "string", default: "Psalmist Gift" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "Audio Messages, Sermons & Sacred Songs" }
+          - { label: "Profile Photo", name: "profile_image", widget: "image", required: false }
+          - { label: "Short Bio", name: "bio", widget: "text", required: false }
+
   - name: "blog"
-    label: "Blog Posts"
+    label: "Blog Posts / Sermons"
     folder: "content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
