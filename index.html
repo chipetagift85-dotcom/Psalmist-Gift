@@ -112,7 +112,6 @@
       text-align: center;
     }
 
-    /* Search & Filter Controls */
     .controls-container {
       margin-bottom: 30px;
       display: flex;
@@ -141,7 +140,6 @@
       box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
     }
 
-    /* Category Filter Tabs */
     .category-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -338,7 +336,6 @@
     </div>
   </header>
 
-  <!-- Search & Category Filter Navigation -->
   <div class="controls-container">
     <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search resources by keyword..." onkeyup="filterPosts()">
     
@@ -483,11 +480,8 @@
 
     function setCategory(category, btnElement) {
       currentCategory = category;
-      
-      // Update active tab styling
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       btnElement.classList.add('active');
-
       filterPosts();
     }
 
