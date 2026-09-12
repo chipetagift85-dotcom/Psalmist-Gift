@@ -70,7 +70,7 @@
     header { 
       border-bottom: 1px solid var(--border-subtle); 
       padding-bottom: 30px; 
-      margin-bottom: 35px; 
+      margin-bottom: 30px; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -110,6 +110,36 @@
       margin: 10px auto 0 auto;
       font-size: 0.95rem;
       text-align: center;
+    }
+
+    /* Search Bar Styling */
+    .search-container {
+      margin-bottom: 35px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 450px;
+      padding: 12px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 30px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .search-bar::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-bar:focus {
+      border-color: var(--border-color);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
     }
 
     .post { 
@@ -283,6 +313,11 @@
     </div>
   </header>
 
+  <!-- Instant Search Bar -->
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search sermons, songs, or devotions..." onkeyup="filterPosts()">
+  </div>
+
   <main id="posts-container">
     <p>Loading resources...</p>
   </main>
@@ -323,6 +358,8 @@
   </footer>
 
   <script>
+    let allPostsData = [];
+
     async function fetchSettings() {
       try {
         const res = await fetch('/content/settings/profile.json');
@@ -373,7 +410,7 @@
           return;
         }
 
-        container.innerHTML = '';
+        allPostsData = [];
 
         for (const file of files.reverse()) {
           if (file.name.endsWith('.md')) {
@@ -397,37 +434,63 @@
               if (line.startsWith('file_upload:')) mediaFile = line.replace('file_upload:', '').trim().replace(/^"(.*)"$/, '$1');
             });
 
-            const postCard = document.createElement('article');
-            postCard.className = 'post';
-
-            let mediaHTML = '';
-            if (mediaFile) {
-              if (mediaFile.endsWith('.mp4') || mediaFile.endsWith('.mov')) {
-                mediaHTML = `<video controls><source src="${mediaFile}"></video>`;
-              } else if (mediaFile.endsWith('.pdf') || mediaFile.endsWith('.docx')) {
-                mediaHTML = `<a href="${mediaFile}" target="_blank" class="btn">View Document</a>`;
-              } else {
-                mediaHTML = `
-                  <audio controls preload="metadata"><source src="${mediaFile}" type="audio/mpeg"></audio>
-                  <a href="${mediaFile}" download class="btn">Download Audio</a>
-                `;
-              }
-            }
-
-            postCard.innerHTML = `
-              <h2>${title}</h2>
-              <div class="meta">Category: ${category} ${date ? '| Date: ' + date : ''}</div>
-              ${mediaHTML}
-              <div class="post-content">${marked.parse(body)}</div>
-            `;
-
-            container.appendChild(postCard);
+            allPostsData.push({ title, date, category, mediaFile, body });
           }
         }
+
+        renderPosts(allPostsData);
       } catch (err) {
         console.error(err);
         container.innerHTML = '<p>Failed to load resources.</p>';
       }
+    }
+
+    function renderPosts(posts) {
+      const container = document.getElementById('posts-container');
+      if (posts.length === 0) {
+        container.innerHTML = '<p>No matching resources found.</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+
+      posts.forEach(post => {
+        const postCard = document.createElement('article');
+        postCard.className = 'post';
+
+        let mediaHTML = '';
+        if (post.mediaFile) {
+          if (post.mediaFile.endsWith('.mp4') || post.mediaFile.endsWith('.mov')) {
+            mediaHTML = `<video controls><source src="${post.mediaFile}"></video>`;
+          } else if (post.mediaFile.endsWith('.pdf') || post.mediaFile.endsWith('.docx')) {
+            mediaHTML = `<a href="${post.mediaFile}" target="_blank" class="btn">View Document</a>`;
+          } else {
+            mediaHTML = `
+              <audio controls preload="metadata"><source src="${post.mediaFile}" type="audio/mpeg"></audio>
+              <a href="${post.mediaFile}" download class="btn">Download Audio</a>
+            `;
+          }
+        }
+
+        postCard.innerHTML = `
+          <h2>${post.title}</h2>
+          <div class="meta">Category: ${post.category} ${post.date ? '| Date: ' + post.date : ''}</div>
+          ${mediaHTML}
+          <div class="post-content">${marked.parse(post.body)}</div>
+        `;
+
+        container.appendChild(postCard);
+      });
+    }
+
+    function filterPosts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = allPostsData.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.category.toLowerCase().includes(query) || 
+        p.body.toLowerCase().includes(query)
+      );
+      renderPosts(filtered);
     }
 
     fetchSettings();
